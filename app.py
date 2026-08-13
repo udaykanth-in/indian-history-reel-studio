@@ -29,7 +29,7 @@ def j(s):
 
 def research(topic,audience,platform,duration,style,series,episode,prev,nxt,model):
     p=f'''Research this Indian history topic rigorously. TOPIC={topic}; AUDIENCE={audience}; PLATFORM={platform}; LENGTH={duration}s; STYLE={style}; SERIES={series or 'none'}; EPISODE={episode or 'none'}; PREVIOUS={prev or 'none'}; NEXT={nxt or 'none'}.
-Use authoritative sources and cross-check important claims. Separate evidence from legends and disputed interpretations. Return JSON with topic, one_sentence_summary, historical_context, why_it_matters, timeline[{"date":"","event":"","significance":""}], key_people[{"name":"","role":"","significance":""}], key_locations[{"location":"","significance":""}], verified_facts[], partially_verified_claims[], disputed_claims[], common_myths[], trend_signals[], references[{"source":"","source_type":"","what_it_supports":""}], confidence_score.'''
+Use authoritative sources and cross-check important claims. Separate evidence from legends and disputed interpretations. Return JSON with topic, one_sentence_summary, historical_context, why_it_matters, timeline[{{"date":"","event":"","significance":""}}], key_people[{{"name":"","role":"","significance":""}}], key_locations[{{"location":"","significance":""}}], verified_facts[], partially_verified_claims[], disputed_claims[], common_myths[], trend_signals[], references[{{"source":"","source_type":"","what_it_supports":""}}], confidence_score.'''
     return j(ask(p,model,True))
 
 def story(kb,duration,style,model):
@@ -37,7 +37,7 @@ def story(kb,duration,style,model):
     return j(ask(p,model))
 
 def bible(kb,story,model):
-    p=f'''Create a project visual bible for a historical documentary. Research={json.dumps(kb,ensure_ascii=False)} Story={json.dumps(story,ensure_ascii=False)}. Return JSON with characters[{"name":"","age_range":"","physique":"","face":"","hair":"","facial_hair":"","skin_tone":"","costume":"","headwear":"","accessories":"","weapons":"","distinctive_features":""}], locations[{"name":"","period":"","geography":"","architecture":"","materials":"","fortifications":"","landscape":"","vegetation":"","weather":"","landmarks":""}], cinematic_bible:{"lighting":"","lens_language":"","atmosphere":"","realism":"","color_character":"","composition":""}, timeline_bible. Never claim an exact appearance unless supported; use historically plausible representation where uncertain.'''
+    p=f'''Create a project visual bible for a historical documentary. Research={json.dumps(kb,ensure_ascii=False)} Story={json.dumps(story,ensure_ascii=False)}. Return JSON with characters[{{"name":"","age_range":"","physique":"","face":"","hair":"","facial_hair":"","skin_tone":"","costume":"","headwear":"","accessories":"","weapons":"","distinctive_features":""}}], locations[{{"name":"","period":"","geography":"","architecture":"","materials":"","fortifications":"","landscape":"","vegetation":"","weather":"","landmarks":""}}], cinematic_bible:{{"lighting":"","lens_language":"","atmosphere":"","realism":"","color_character":"","composition":""}}, timeline_bible. Never claim an exact appearance unless supported; use historically plausible representation where uncertain.'''
     return j(ask(p,model))
 
 def scenes(kb,story,vb,duration,model):
